@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import styles from './Button.module.css';
 function Button({ children, type, onClick }) {
   return (
@@ -9,7 +8,7 @@ function Button({ children, type, onClick }) {
   );
 }
 Button.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   type: PropTypes.string,
   onClick: PropTypes.func,
 };
