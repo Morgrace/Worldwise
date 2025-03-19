@@ -40,8 +40,6 @@ function Form() {
         setCityName(data.city || data.locality);
         setEmoji(convertToEmoji(data.countryCode));
         setCountry(data.countryName);
-
-        console.log(data);
       } catch (error) {
         console.error(error.message);
       } finally {

@@ -16,15 +16,15 @@ const formatDate = date => {
   }).format(parsedDate);
 };
 
-function CityItem({ cities, currentCity }) {
-  const { deleteCity } = useCities();
+function CityItem() {
+  const { deleteCity, currentCity, cities } = useCities();
   return cities.map(city => {
     const { cityName, date, emoji, position } = city;
     return (
-      <li onClick={() => (currentCity.current = city.id)} key={city.id}>
+      <li key={city.id}>
         <Link
           className={`${styles.cityItem} ${
-            city.id === currentCity.current ? styles['cityItem--active'] : ''
+            city.id === currentCity.id ? styles['cityItem--active'] : ''
           }`}
           to={`${city?.id}?lat=${position?.lat}&lng=${position?.lng}`}
         >

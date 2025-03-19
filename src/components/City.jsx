@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from './Button';
 import styles from './City.module.css';
 import { useCities } from '../context/CitiesProvider';
+import { useEffect } from 'react';
 
 const formatDate = date =>
   new Intl.DateTimeFormat('en', {
@@ -12,10 +13,16 @@ const formatDate = date =>
   }).format(new Date(date));
 
 function City() {
-  const { cities } = useCities();
+  const { currentCity, loadCurrentCity } = useCities();
   const navigate = useNavigate();
   const { id } = useParams();
-  const currentCity = cities.find(city => id === city.id);
+  useEffect(
+    function () {
+      if (!id || id === currentCity.id) return;
+      loadCurrentCity(id);
+    },
+    [id, loadCurrentCity, currentCity.id]
+  );
   const { cityName, emoji, date, notes } = currentCity;
 
   return (

@@ -5,12 +5,12 @@ import Spinner from './Spinner';
 import styles from './CityList.module.css';
 
 function CityList() {
-  const { isLoading, cities, currentCity } = useCities();
+  const { isLoading } = useCities();
   if (isLoading) return <Spinner />;
 
   return (
     <ul className={styles.cityList}>
-      <CityItem cities={cities} currentCity={currentCity} />
+      <CityItem />
     </ul>
   );
 }
